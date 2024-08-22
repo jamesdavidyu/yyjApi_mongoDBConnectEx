@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://jamesdavidyu:xwgCiQI2zs711OvA@yyjdb.pbw7r.mongodb.net/?retryWrites=true&w=majority&appName=yyjDB
+      database: yyjDB
