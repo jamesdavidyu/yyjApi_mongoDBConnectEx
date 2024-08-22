@@ -2,9 +2,11 @@ package com.example.demo.service;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,11 +15,14 @@ public class UserService {
 
     @Autowired
     private UserRepository repository;
+    private Utils utils;
 
     public User addUser(User user) {
         user.setId(UUID.randomUUID().toString().split("-")[0]);
         // TODO: add hashing to password
-        // TODO: set createdAt to localdatetime.now()
+        String userPassword = user.getPassword();
+        user.setPassword(utils.hashPassword(userPassword));
+        user.setCreatedAt(LocalDateTime.now());
         return repository.save(user);
     }
 
