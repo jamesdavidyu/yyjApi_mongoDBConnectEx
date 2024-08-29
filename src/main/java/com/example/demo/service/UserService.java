@@ -19,7 +19,6 @@ public class UserService {
 
     public User addUser(User user) {
         user.setId(UUID.randomUUID().toString().split("-")[0]);
-        // TODO: add hashing to password
         String userPassword = user.getPassword();
         user.setPassword(utils.hashPassword(userPassword));
         user.setCreatedAt(LocalDateTime.now());
